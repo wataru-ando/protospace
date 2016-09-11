@@ -5,10 +5,7 @@
 テーブル設計
 
 1,productsテーブル  
-アソシエーション  
-~~~~~~~~~~~~~~~  
-proto_image_url :text
-product_id : integer
+アソシエーション
 ~~~~~~~~~~~~~~~  
 belongs_to :uses  
 has_many :comment  
