@@ -7,9 +7,10 @@
 1,productsテーブル  
 アソシエーション
 ~~~~~~~~~~~~~~~  
-belongs_to :uses  
-has_many :comment  
-has_many :image  
+belongs_to :user  
+has_many :comments  
+has_many :images  
+has_many :likes
 ~~~~~~~~~~~~~~~  
 カラム  
 ~~~~~~~~~~~~~~~  
@@ -18,14 +19,15 @@ copy : string
 concept : text  
 created_at : timestamp  
 update_at : timestamp  
-user_id : integer  
-image_id : integer  
+user_id : references  
+image_id : references  
 ~~~~~~~~~~~~~~~  
 2,usersテーブル  
 アソシエーション  
 ~~~~~~~~~~~~~~~  
 has_many :products  
 has_many :comments  
+belongs_to :like
 ~~~~~~~~~~~~~~~  
 カラム  
 ~~~~~~~~~~~~~~~  
@@ -48,8 +50,8 @@ belongs_to :user
 カラム  
 ~~~~~~~~~~~~~~~  
 comment : text  
-product_id : integer  
-user_id : integer  
+product_id : references  
+user_id : references  
 created_at : timestamp  
 update_at : timestamp  
 ~~~~~~~~~~~~~~~  
@@ -60,6 +62,16 @@ belongs_to :product
 ~~~~~~~~~~~~~~~  
 カラム  
 ~~~~~~~~~~~~~~~  
-proto_image_url :text  
-product_id : integer  
+url :text  
+product_id : references  
 ~~~~~~~~~~~~~~~  
+5,likesテーブル  
+アソシエーション  
+~~~~~~~~~~~~~~  
+belongs_to :product  
+has_many :users  
+~~~~~~~~~~~~~~  
+カラム  
+~~~~~~~~~~~~~~  
+product_id : references
+user_id : references
